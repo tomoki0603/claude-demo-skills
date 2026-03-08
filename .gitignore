@@ -1,0 +1,16 @@
+# 日経ブリーフィング 生成ファイル（大量生成されるデータ）
+nikkei-summaries/2026-*/
+nikkei-summaries/2027-*/
+
+# Playwright 一時ファイル
+.playwright-mcp/
+
+# Claude ローカル設定（端末固有）
+.claude/settings.local.json
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
