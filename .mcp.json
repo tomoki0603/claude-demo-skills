@@ -7,7 +7,8 @@
         "npx",
         "@playwright/mcp@latest",
         "--user-data-dir=C:/Users/start/.playwright-nikkei-profile",
-        "--browser=chromium"
+        "--browser=chromium",
+        "--blocked-origins=https://connect.facebook.net;https://www.facebook.com;https://www.facebook.net;https://static.xx.fbcdn.net"
       ]
     }
   }
