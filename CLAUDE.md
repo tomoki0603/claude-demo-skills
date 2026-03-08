@@ -1,23 +1,37 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with this repository.
 
 ## Repository Overview
 
-This is a Japanese-language documentation repository containing educational guides about Claude Code. There is no build system, source code, or test suite — the content is purely Markdown documentation.
+Claude Code のカスタムスキル集リポジトリ。スキルファイル（`SKILL.md`）と参照ファイル（`references/`）で構成される。
+GitHub: https://github.com/tomoki0603/claude-demo-skills
 
-## Contents
+## Project Structure
 
-- **claude-code-intro.md** — Beginner-friendly introduction to Claude Code: what it is, core capabilities, and how it differs from browser-based AI chat. Written in Japanese.
-- **claude-code-skills-guide.md** — Comprehensive technical reference (32KB) covering Skills, slash commands, MCP (Model Context Protocol) server integration, Hooks automation, `.claude` folder structure, and IDE integration. Written in Japanese.
+```
+.claude/skills/          — スキル本体（Claude Code が自動ロード）
+.mcp.json                — MCP サーバー設定（Playwright）
+nikkei-summaries/        — 日経ブリーフィング出力フォルダ
+```
 
-## Document Structure
+## Available Skills
 
-The skills guide covers these major topics in order:
-1. Skills — custom instruction files at `.claude/skills/<name>/SKILL.md`
-2. Slash commands — built-in (`/clear`, `/compact`, `/model`, etc.) and skill-based
-3. MCP — external tool integration (GitHub, Notion, PostgreSQL, Slack, Stripe) via `.mcp.json`
-4. Hooks — event-driven automation (`PreToolUse`, `PostToolUse`, `SessionStart`, `Notification`, `Stop`)
-5. `.claude` folder layout — `settings.json`, `settings.local.json`, `CLAUDE.md`, `skills/`, `hooks/`
-6. IDE integration — VS Code and JetBrains extensions
-7. Practical examples — team coding standards, GitHub issue automation, natural language DB queries
+新しいスキルを追加する際は、このセクションを更新してトリガーワードの重複を防ぐこと。
+
+| スキル名 | 用途 | 主なトリガーワード |
+|---------|------|----------------|
+| `nikkei-investment-briefing` | 日経電子版の投資ニュースを収集・要約 | 「日経をまとめて」「朝刊をチェックして」「夕刊を追加して」 |
+| `skill-creator-max` | 新規スキルを対話形式で設計・生成 | 「新しいスキルを作りたい」「スキルを設計したい」「skill-creator-maxを使って」 |
+
+## Adding New Skills
+
+1. `.claude/skills/<skill-name>/SKILL.md` を作成する
+2. 上記テーブルにスキル名・用途・トリガーワードを追記する
+3. 既存スキルとトリガーワードが重複しないか確認する
+4. 変更を commit して push する
+
+## MCP Configuration
+
+`.mcp.json` に Playwright MCP を設定済み（Windows 環境）。
+新しい MCP を追加する場合は `.mcp.json` を編集し、Claude Code を再起動すること。
